@@ -1,0 +1,24 @@
+<div class="container">
+  <app-assets-selector
+    [instrumentsList]="instruments()"
+    (subscribe)="subscribeToMarket($event)"
+  ></app-assets-selector>
+
+  <app-market-info [marketInfo]="marketInfo()"></app-market-info>
+
+  <div class="chart">
+    <app-chart [chartData]="chartData.value()"></app-chart>
+
+    @if (!chartData.value()?.length) {
+      <div class="overlay">
+        @if (chartData.isLoading()) {
+          <mat-spinner></mat-spinner>
+        } @else if (chartData.error()) {
+          <div class="error-color large-text">An error occurred</div>
+        } @else {
+          <div>No Chart Data</div>
+        }
+      </div>
+    }
+  </div>
+</div>

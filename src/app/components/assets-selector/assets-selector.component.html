@@ -1,0 +1,20 @@
+<div class="selector-container">
+  <mat-form-field appearance="outline">
+    <mat-label>Select asset</mat-label>
+    <mat-select [formControl]="instrumentControl">
+      @for (option of instrumentsList(); track option.id) {
+        <mat-option [value]="option">
+          {{ option.symbol }}
+        </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+
+  <button
+    mat-flat-button
+    (click)="onSubscribe()"
+    [disabled]="!instrumentControl.value"
+  >Subscribe
+  </button>
+</div>

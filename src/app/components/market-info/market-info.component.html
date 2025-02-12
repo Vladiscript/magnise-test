@@ -1,0 +1,24 @@
+<div class="info__container">
+  <div class="info__item">
+    <div class="info__item-label">Symbol</div>
+    <div class="info__item-value">
+      {{ symbol() }}
+    </div>
+  </div>
+  <div class="info__item">
+    <div class="info__item-label">Price</div>
+    <div
+      class="info__item-value"
+      [class.skeleton]="status() === 'loading'"
+    >{{ price() }}
+    </div>
+  </div>
+  <div class="info__item">
+    <div class="info__item-label">Time</div>
+    <div
+      class="info__item-value"
+      [class.skeleton]="status() === 'loading'"
+    >{{ time() }}
+    </div>
+  </div>
+</div>
